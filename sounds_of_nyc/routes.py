@@ -31,6 +31,8 @@ def search_res(search):
 
 
 # Classification stuff
+token = 'BQA1-EvGmBLh4ftQO_Zs7KEwI5dc3Wq_PQSlF58fngUsdD-pfrvZalmgVPDCdR6rE4aWbNjcbAQn_MvQR9lETcnV4a5-wC13rvkvHpXvHCombRCpMiVu07_mWmroWPjIMEn3zTA0lxeBsw'
+
 def get_celeb_info(img_url):
   resp = requests.post(
     "https://api.deepai.org/api/celebrity-recognition",
@@ -49,7 +51,7 @@ def get_artist_id(artist_name):
   headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer BQDiV6JXLr-wTQ5SWXI4eYJQw19Z_tyOn_GjSzYhjlPc20U22VrOZSsPXShsycbQqcEZIaYIIVCCoGPL-Rf1zp80buvr4SOfpDzNrQc4qap0x_YwTwIpHqRGcdt-gtNf1Efhw2exSkTBzw',
+    'Authorization': 'Bearer ' + token,
   }
   params = (
       ('q', artist_name),
@@ -63,8 +65,8 @@ def get_albums_list(artist_id):
   headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer BQDiV6JXLr-wTQ5SWXI4eYJQw19Z_tyOn_GjSzYhjlPc20U22VrOZSsPXShsycbQqcEZIaYIIVCCoGPL-Rf1zp80buvr4SOfpDzNrQc4qap0x_YwTwIpHqRGcdt-gtNf1Efhw2exSkTBzw',
-  }
+    'Authorization': 'Bearer ' + token,
+    }
   params = (
       ('include_groups', 'single,appears_on'),
       ('market', 'ES'),
