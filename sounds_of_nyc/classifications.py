@@ -1,36 +1,5 @@
 import requests
-from sounds_of_nyc import sounds_of_nyc
-from flask import render_template, request
 
-@sounds_of_nyc.route('/')
-def index():
-    return render_template("index.html")
-
-@sounds_of_nyc.route('/', methods=['POST'])
-def index_post():
-    img_url = str(request.form['link'])
-    celeb_info = get_celeb_info(img_url)
-    name = celeb_info['name']
-    probability = celeb_info['confidence']
-    if name != 'unknown':
-        artist_id = get_artist_id(name)
-        albums = get_albums_list(artist_id)
-    else:
-        albums = 'None'
-
-    return render_template("albums.html",
-        albums=albums,
-        img_url=img_url,
-        artist_name=name,
-        confidence=probability)
-
-@sounds_of_nyc.route('/res')
-def search_res(search):
-    res = [search]
-    return res
-
-
-# Classification stuff
 def get_celeb_info(img_url):
   resp = requests.post(
     "https://api.deepai.org/api/celebrity-recognition",
