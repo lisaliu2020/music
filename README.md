@@ -3,8 +3,9 @@ You can upload a musician’s photo to our web app and it will use deep learning
 
 To Run Locally:
 
-In terminal type - export FLASK_APP=newyork.py
-                 - flask run
+In terminal type 
+- export FLASK_APP=newyork.py
+- flask run
                  
 Go to Link Provided
 
